@@ -24,26 +24,26 @@ class Book
         puts "      #{book.title}".green.summary(75)
         puts 
         if book.authors
-            puts "  Author: #{book.authors.join(", ")}".green
+            puts " Author: #{book.authors.join(", ")}".green
             puts 
         end
         if book.published_date
-            puts "  Published: #{book.published_date}".green
+            puts " Published: #{book.published_date}".green
             puts 
         end
         if book.genre
-            puts "  Genre: #{book.genre.join(", ")}".green
+            puts " Genre: #{book.genre.join(", ")}".green
             puts 
         end
         if book.synopsis
             synopsis = Linesetter.format(book.synopsis)
-            puts "  Synopsis: ".green
+            puts " Synopsis: ".green
             puts "      #{synopsis}".green
 
             
             puts 
         end
-        puts "  View more info at #{book.link}.".green
+        puts " View more info at #{book.link}.".green
         puts
         puts "|                                                                          |"
         puts "|                                                                          |"

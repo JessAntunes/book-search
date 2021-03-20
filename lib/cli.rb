@@ -32,6 +32,46 @@ class Cli
         end
     end
 
+    def display_book_info(index)
+        book = Book.all[index]
+        puts 
+        puts "._^~^-~^~^~--^^~^~^~^^~^~^~^-~^~^~--^~^~^~-^~^^-^-~^~-~^~^^-~^~^~--^^~^~-^~|"
+        puts "|                                                                          |"
+        puts 
+        puts "      #{book.title}".green.summary(75)
+        puts 
+        if book.authors
+            puts " Author: #{book.authors.join(", ")}".green
+            puts 
+        end
+        if book.published_date
+            puts " Published: #{book.published_date}".green
+            puts 
+        end
+        if book.genre
+            puts " Genre: #{book.genre.join(", ")}".green
+            puts 
+        end
+        if book.synopsis
+            synopsis = Linesetter.format(book.synopsis)
+            puts " Synopsis: ".green
+            puts "      #{synopsis}".green
+
+            
+            puts 
+        end
+        puts " View more info at #{book.link}.".green
+        puts
+        puts "|                                                                          |"
+        puts "|                                                                          |"
+        puts "'~^-~^~^~--^~^~~~^~^-~^~^~--^~^^-~^~^~~--^~^^~^~-~^^-~^~^~-~^-~^~^~--^~^-~^'"
+        puts 
+    end
+
+    def display_results_list
+        Book.all.each.with_index(1) { |book, index| puts "     #{index}. #{book.title}".green.summary(78)}
+    end
+
     def get_input
         input = gets.chomp
         puts 
@@ -49,7 +89,9 @@ class Cli
         if input == "SEARCH" || input == "search"
             Book.clear_results
             search
-        elsif input.count("a-zA-Z") > 0
+        elsif input.count("a-zA-Z") > 0 
+            number_selection
+        elsif input.to_i < 1 || input.to_i > 10
             number_selection
         end
         input
@@ -62,7 +104,7 @@ class Cli
         puts 
         puts "                  Here are your results:".green
         puts 
-        Book.display_results_list
+        display_results_list
         puts
         puts "|                                                                          |"
         puts "|                                                                          |"
@@ -90,7 +132,7 @@ class Cli
         results_menu
         input = number_selection
         index = input_to_index(input)
-        Book.display_book_info(index)
+        display_book_info(index)
         search_again
     end
 

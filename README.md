@@ -7,7 +7,11 @@ The user is someone who would like to search by title or topic and get a list of
 
 This project not only fullfills the users wants, but also provides a link to the book in Google Books for the rest of the information the API provides about that particular book. This will allow the user to gain more information to obtain the book, such as how to view it for free.<br><br>
 
-## **Preview**
+## **Preview** 
+<br>
+
+### [View the Demo](https://youtu.be/dP7B7OLcWGk)
+<br>
 
 #### Search
 
